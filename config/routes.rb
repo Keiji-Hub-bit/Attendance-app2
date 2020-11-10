@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
-  get '/login', to: 'users#new'
+  get '/signup', to: 'users#new'
+  
+  get '/login', to: 'sessions#new'
   resources :users
 end
