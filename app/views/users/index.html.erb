@@ -9,17 +9,18 @@
         <th><%= User.human_attribute_name :name %></th>
       </tr>
     </thead>
-
+    
     <% @users.each do |user| %>
       <tr>
         <td>
         	<%= link_to user.name, user %>&nbsp;|&nbsp;
-        	<%= link_to "基本情報の修正, "#" %>&nbsp;|&nbsp;<% if current_user.admin? && !current_user?(user) %>
+        	<%= link_to "基本情報の修正", '#' %>&nbsp;|&nbsp; 
+        	<% if current_user.admin? && !current_user?(user) %>
         	<%= link_to "削除", user, method: :delete,
-              data: { confirm: "#{user.name}を削除してよろしいですか？" } %>
+              data: { confirm: "{user.name}を削除してよろしいですか？" } %>
           <% end %>
-        </td>
-      </tr>
+       </td>
+     </tr>
     <% end %>
   </table>
   <%= will_paginate %>
