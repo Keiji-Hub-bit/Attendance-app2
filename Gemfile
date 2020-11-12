@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '~> 5.1.6'
+gem 'rails-i18n' # 勤怠8章おまけこのgemを追加しています。
 gem 'bcrypt' # 勤怠4章今回追加するgemです
 gem 'faker' # 勤怠8章この行を追加してください
 gem 'bootstrap-sass'
