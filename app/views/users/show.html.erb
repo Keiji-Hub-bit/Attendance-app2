@@ -52,7 +52,11 @@
             <% end %>
           </td>
           <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-          <td></td>
+          <td>
+            <% if day.started_at.present? && day.finished_at.present? %>
+              <%= working_times(day.started_at, day.finished_at) %>
+            <% end %>
+          </td>
           <td></td>
         </tr>
       <% end %>
