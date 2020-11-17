@@ -82,6 +82,13 @@ class UsersController < ApplicationController
         redirect_to login_url
       end
     end
+    
+    def logged_in
+      if !current_user.nil? after logged_in
+        flash.now[:info] = "すでにログインしています。"
+      end
+    end
+    
    # アクセスしたユーザーが現在ログインしているユーザーか確認します。
     def correct_user
       redirect_to(root_url) unless current_user?(@user)
