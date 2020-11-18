@@ -41,7 +41,7 @@ class AttendancesController < ApplicationController
     redirect_to user_url(date:params[:date])
   rescue ActiveRecord::RecordInvalid #トランザクションによるエラーの分岐
     flash[:danger] = "無効なデータがあったため更新をキャンセルしました。"
-    redirect_to attendances_edit_one_month_user_url(date:params[:date])
+    redirect_to attendances_edit_one_month_user_url(date: params[:date])
   end
   
   private
@@ -52,8 +52,8 @@ class AttendancesController < ApplicationController
     
     #管理権限者、または現在ログインしているユーザーを認可します。
     def admin_or_correct_user
-    	@user = User.find(params[:user_id])if @user.blank?
-    	unless current_user?(@user)||current_user.admin?
+    	@user = User.find(params[:id]) if @user.blank?
+    	unless current_user?(@user) || current_user.admin?
     		flash[:danger] = "編集権限がありません。"
     		redirect_to(root_url)
     	end
