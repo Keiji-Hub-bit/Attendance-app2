@@ -47,12 +47,12 @@ class AttendancesController < ApplicationController
   private
     #1ヶ月分の勤怠情報を扱います。
     def attendances_params
-    	params.require(:user).permit(attendances:[:started_at, :finished_at, :note])[:attendances]
+    	params.require(:user).permit(attendances: [:started_at, :finished_at, :note])[:attendances]
     end	
     
     #管理権限者、または現在ログインしているユーザーを認可します。
     def admin_or_correct_user
-    	@user = User.find(params[:user_id]) if @user.blank?
+    	@user = User.find(params[:id]) if @user.blank?
     	unless current_user?(@user) || current_user.admin?
     		flash[:danger] = "編集権限がありません。"
     		redirect_to(root_url)
