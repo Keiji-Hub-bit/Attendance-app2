@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   
   def new
+    if logged_in?
+      flash.now[:info] = "すでにログインしています。"
+    end
   end
   
   def create
