@@ -1,7 +1,7 @@
 class Attendance < ApplicationRecord
   belongs_to :user
   
-  validates :worked_on,presence:true
+  validates :worked_on, presence: true
   validates :note, length: { maximum: 50 }
   
   #出勤時間が存在しない場合は退勤時間は無効

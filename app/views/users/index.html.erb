@@ -1,6 +1,15 @@
 <% provide(:title, 'All Users') %>
 <h1>全てのユーザー</h1>
 
+	<!--<検索拡張機能>-->
+<div class="col-md-3 form-inline pull-right">
+ <h>ユーザー検索</h>
+<%= form_tag(users_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'search', :name => nil %>
+<% end %>
+</div>
+
 <div class="col-md-10 col-md-offset-1">
 	<%= will_paginate %>
   <table class="table table-condensed table-hover" id="table-users">
