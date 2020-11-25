@@ -66,6 +66,15 @@
     margin-top: -10px;
     margin-bottom: 10px;
 }
+
+/*日曜日に赤、土曜日に青を付ける*/
+.wday0{
+  color:red;
+}
+.wday6{
+  color:blue;
+}
+
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
