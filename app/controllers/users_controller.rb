@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page]).search(params[:search])
+    
+    if params["search"].blank?
+      flash.now[:info] = '検索ワードを入力してください。'
+    end
     # @users = User.where(activated: true).paginate(page: params[:page]).search(params[:search])
     # @users = User.paginate(page: params[:page])
   end
