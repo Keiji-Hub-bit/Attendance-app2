@@ -6,12 +6,17 @@ class UsersController < ApplicationController
   before_action :admin_user,only: [:destroy, :edit_basic_info, :update_basic_info]
   before_action :set_one_month, only: :show
 
+
   def index
-    @users = User.paginate(page: params[:page]).search(params[:search])
+    method = params[:search_method]
+    word = params[:search_word]
+    @users = User.paginate(page: params[:page]).search(method,word)
     
-    if params["search"].blank?
-      flash.now[:info] = '検索ワードを入力してください。'
+    if word == ""
+      flash.now[:info] = "検索ワードを入力してください。"
     end
+      
+    # @users = User.search(method,word)
     # @users = User.where(activated: true).paginate(page: params[:page]).search(params[:search])
     # @users = User.paginate(page: params[:page])
   end

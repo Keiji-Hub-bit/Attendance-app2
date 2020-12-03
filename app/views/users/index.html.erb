@@ -4,10 +4,13 @@
 	<!--<検索拡張機能>-->
 <div class="col-md-3 form-inline pull-right">
  <h>ユーザー検索</h>
-<%= form_tag(users_path, :method => 'get' ) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag '検索', :name => nil %>
-<% end %>
+  <%= form_tag(users_path, :method => 'get' ) do %>
+  <%= select(@search_content, :search_method, [["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]])%>
+    <%= text_field(@search_content, :search_word) %>
+  <!--< text_field_tag :search %>-->
+    <%= submit_tag '検索'%>
+  <!--< submit_tag '検索', :name => nil %>-->
+  <% end %>
 </div>
 
 <div class="col-md-10 col-md-offset-1">
