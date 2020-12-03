@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     
     if word == ""
       flash.now[:info] = "検索ワードを入力してください。"
-    elsif word != @users
+    elsif word != params[:search]
       flash.now[:info] = "検索ワード#{word}に一致するユーザーはいません。"
     end
       
